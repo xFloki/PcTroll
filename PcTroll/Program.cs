@@ -35,6 +35,9 @@ namespace PcTroll
             Thread generaSonidosThread = new Thread(new ThreadStart(generaSonidos));
             Thread generaPopupsThread = new Thread(new ThreadStart(generaPopups));
 
+            //Creamos un DateTime con el momento actual cuando se ejectua el programa y los segundo que queremos que pasen para 
+            //que este empiece a ejecutarse, tras esto con un while ponemos a los hilos en espera hasta que el momento actual sea igual
+            //a la suma del momento en el que empezamos mas los segundos de espera
             DateTime inicio = DateTime.Now.AddSeconds(180);
             while (inicio > DateTime.Now) { Thread.Sleep(1000); }
 
@@ -43,6 +46,7 @@ namespace PcTroll
             generaSonidosThread.Start();
             generaPopupsThread.Start();
 
+            //Al igual que para darle un tiempo de espera para la ejecucion ponemos unos segundo tras los cuales el programa termina 
             inicio = DateTime.Now.AddSeconds(180);
             while (inicio > DateTime.Now) { Thread.Sleep(1000); }
 
@@ -140,6 +144,7 @@ namespace PcTroll
                 if (nRandom.Next(100) > 90)
                 {
 
+                    //En canso de que se vaya a producir un popup se escoge uno de los dos de manera aleatoria 
                     switch (nRandom.Next(2))
                     {
                         case 0:
@@ -160,6 +165,7 @@ namespace PcTroll
                     }
                 }
 
+                //se pausa el hilo durante unos segundo tras ejecutarse
                 Thread.Sleep(6000);
             }
 
